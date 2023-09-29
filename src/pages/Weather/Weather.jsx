@@ -27,7 +27,9 @@ const Weather = () => {
     if (location) {
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${unit}&appid=25ae00b75f2f20f83d102237d3270bc5`
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${unit}&appid=${
+            import.meta.env.VITE_weatherApiKey
+          }`
         )
         .then((response) => {
           setWeatherData(response.data);
@@ -53,7 +55,9 @@ const Weather = () => {
           const { latitude, longitude } = position.coords;
           axios
             .get(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${unit}&appid=25ae00b75f2f20f83d102237d3270bc5`
+              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${unit}&appid=${
+                import.meta.env.VITE_weatherApiKey
+              }`
             )
             .then((response) => {
               console.log("temp: ", response.data.main.temp);
